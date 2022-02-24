@@ -14,13 +14,15 @@ GPIO.setup(chan3, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 # Start the NXBT service
 nx = nxbt.Nxbt()
-switch_addresses = nx.get_switch_addresses()
-if not switch_addresses:
-  switch_addresses = ['D0:55:09:A8:55:3B']
+# switch_addresses = nx.get_switch_addresses()
+switch_addresses = ['D0:55:09:A8:55:3B']
+print(switch_addresses)
 # Create a Pro controller and wait for it to connect
 print("connecting controllers")
 controller_0 = nx.create_controller(nxbt.PRO_CONTROLLER, reconnect_address=switch_addresses)
 # controller_1 = nx.create_controller(nxbt.PRO_CONTROLLER, reconnect_address=switch_addresses)
+sleep(1)
+print("waiting for connection")
 nx.wait_for_connection(controller_0)
 print("done connecting controller 0")
 # nx.wait_for_connection(controller_1)
